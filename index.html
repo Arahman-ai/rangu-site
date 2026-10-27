@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rangu Industrial Sensing</title>
+<meta name="description" content="Rangu makes industrial IoT sensors and turns their data into asset health, layout and operations decisions.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 30%27%3E%3Crect x=%271%27 y=%271%27 width=%2728%27 height=%2728%27 rx=%274%27 fill=%27%23F1F3F2%27 stroke=%27%2314191C%27 stroke-width=%272%27/%3E%3Cpath d=%27M5 17h4l3-8 4 13 3-9 2 4h4%27 fill=%27none%27 stroke=%27%230D6B66%27 stroke-width=%272.4%27 stroke-linejoin=%27round%27 stroke-linecap=%27round%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="Rangu home">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="1" y="1" width="28" height="28" rx="4" fill="none" stroke="var(--ink)" stroke-width="2"/><path d="M5 17h4l3-8 4 13 3-9 2 4h4" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      RANGU <small>rangu.us</small>
+    </a>
+    <nav class="links" aria-label="Main"><a href="sensors.html">Sensors</a><a href="solutions.html">Solutions</a><a href="index.html#how">How it works</a><a href="index.html#contact">Contact</a></nav>
+    <a class="btn primary cta" href="index.html#contact">Talk to an engineer</a>
+  </div>
+</header>
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Industrial IoT sensors &middot; reliability analytics</p>
+      <h1 style="margin-top:14px">Hear the bearing <span>before</span> it fails.</h1>
+      <p class="lede">Rangu makes rugged temperature, vibration, acoustic and machine-vision sensors, then turns their signals into decisions: which asset to fix this week, where each station should sit on the floor, and which step is holding the line back.</p>
+      <div class="ctas">
+        <a class="btn primary" href="sensors.html">Browse sensors</a>
+        <a class="btn" href="solutions.html">Watch the solutions</a>
+      </div>
+    </div>
+    <div class="readout" aria-label="Example live readout from a pump train">
+      <header><span>Line 3 &middot; Pump train P-204</span><span class="live"><i></i>Live demo</span></header>
+      <div class="ch" data-ch="0"><span class="k">Bearing temp &middot; RG-T120</span><span class="v">61.4<small>&deg;C</small></span><svg viewBox="0 0 200 28" preserveAspectRatio="none"><polyline fill="none" stroke="var(--accent)" stroke-width="1.6"/></svg></div>
+      <div class="ch warn" data-ch="1"><span class="k">Vibration RMS &middot; RG-V310</span><span class="v">3.82<small>mm/s</small></span><svg viewBox="0 0 200 28" preserveAspectRatio="none"><polyline fill="none" stroke="var(--warn)" stroke-width="1.6"/></svg></div>
+      <div class="ch" data-ch="2"><span class="k">Acoustic emission &middot; RG-A520</span><span class="v">48.2<small>dB</small></span><svg viewBox="0 0 200 28" preserveAspectRatio="none"><polyline fill="none" stroke="var(--accent)" stroke-width="1.6"/></svg></div>
+      <div class="ch" data-ch="3"><span class="k">Motor current &middot; RG-E210</span><span class="v">37.6<small>A</small></span><svg viewBox="0 0 200 28" preserveAspectRatio="none"><polyline fill="none" stroke="var(--accent)" stroke-width="1.6"/></svg></div>
+    </div>
+  </div>
+</section>
+<section class="band" id="explore">
+  <div class="wrap">
+    <div class="sec-head"><div><p class="eyebrow">Explore</p><h2 style="margin-top:10px">Hardware and the answers it gives</h2></div>
+    <p class="lede">Start with the sensors if you know what you need to measure. Start with the solutions if you know what problem you need solved.</p></div>
+    <div class="doors">
+      <a class="door" href="sensors.html"><span class="eyebrow">12 sensors &middot; 5 families</span><h3>Sensors</h3><p>Temperature, thermal imaging, vibration, acoustic emission, machine vision, power, pressure, UWB location and edge gateways, with full specs.</p><span class="go">Browse the catalog &rarr;</span></a>
+      <a class="door" href="solutions.html"><span class="eyebrow">3 solutions &middot; animated explainers</span><h3>Solutions</h3><p>Asset health and reliability, industrial layout optimization, and operations optimization. Watch how each one turns signals into decisions.</p><span class="go">Watch the solutions &rarr;</span></a>
+    </div>
+  </div>
+</section>
+<section class="band" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="eyebrow">How it works</p><h2 style="margin-top:10px">Four steps, one pipeline</h2></div>
+      <p class="lede">The same data path runs under every solution, so a sensor you add for reliability also feeds layout and throughput analysis.</p>
+    </div>
+    <div class="flow">
+      <div><b>01 SENSE</b><h3>Instrument</h3><p>Clamp, bolt or magnet-mount sensors on motors, pumps, presses and conveyors. Most installs finish in one shift with no line stop.</p></div>
+      <div><b>02 EDGE</b><h3>Condition</h3><p>The RG-X900 gateway samples at up to 51.2 kHz, computes FFTs and features on site, and sends compact summaries instead of raw waveforms.</p></div>
+      <div><b>03 MODEL</b><h3>Learn</h3><p>Baseline models learn each asset's normal behavior. Anomaly, remaining-useful-life and flow models update as new data arrives.</p></div>
+      <div><b>04 ACT</b><h3>Decide</h3><p>Alerts arrive as ranked work orders in your CMMS, layout scenarios as floor plans, and schedules as shift-level recommendations.</p></div>
+    </div>
+  </div>
+</section>
+<section class="band" id="contact">
+  <div class="wrap contact">
+    <div>
+      <p class="eyebrow">Contact</p>
+      <h2 style="margin-top:10px">Start with one asset</h2>
+      <p class="lede" style="margin-top:16px">Most pilots begin with a single critical machine and a 90-day baseline. Tell us what keeps breaking, and we'll suggest the sensors and the first model to run.</p>
+      <dl class="reach">
+        <dt>Email</dt><dd><a class="val" href="mailto:sales@rangu.us">sales@rangu.us</a><button type="button" class="copy" data-copy="sales@rangu.us">Copy</button></dd>
+        <dt>Phone</dt><dd><a class="val" href="tel:+14042037674">+1 (404) 203-7674</a><button type="button" class="copy" data-copy="+1 404 203 7674">Copy</button></dd>
+        <dt>WhatsApp</dt><dd><a class="wa" href="https://wa.me/14042037674" target="_blank" rel="noopener">Chat on WhatsApp</a></dd>
+      </dl>
+    </div>
+    <form id="f" novalidate>
+      <label>Name<input id="f-name" required autocomplete="name"></label>
+      <label>Company<input id="f-co" autocomplete="organization"></label>
+      <label class="full">Work email<input id="f-mail" type="email" required autocomplete="email"></label>
+      <label class="full">Interested in
+        <select id="f-int">
+          <option>Asset health &amp; reliability</option>
+          <option>Layout optimization</option>
+          <option>Operations optimization</option>
+          <option>Sensors only</option>
+        </select>
+      </label>
+      <label class="full">What should we know?<textarea id="f-msg" placeholder="e.g. Two boiler feed pumps trip about once a quarter; no vibration monitoring today."></textarea></label>
+      <div class="full" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><button class="btn primary" type="submit">Request a pilot</button><span class="note">Concept site: this form does not send anything yet.</span></div>
+      <div class="ok" id="f-ok" hidden></div>
+    </form>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Rangu &middot; rangu.us</span>
+    <span class="foot-reach"><a href="mailto:sales@rangu.us">sales@rangu.us</a> &middot; <a href="tel:+14042037674">+1 (404) 203-7674</a> &middot; <a href="https://wa.me/14042037674" target="_blank" rel="noopener">WhatsApp</a></span>
+    <span>Concept site. Product specifications and results in the explainers are illustrative scenarios.</span>
+  </div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
