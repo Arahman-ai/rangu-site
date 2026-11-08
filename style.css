@@ -96,11 +96,13 @@ section.band{padding-block:72px;border-top:1px solid var(--line)}
 .tags span{font-family:var(--f-mono);font-size:.7rem;padding:3px 8px;border-radius:3px;background:var(--accent-soft);color:var(--ink)}
 
 /* solutions */
-.solution{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:40px;align-items:start;padding-block:48px;border-top:1px dashed var(--line)}
+.solution{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;align-items:start;padding-block:48px;border-top:1px dashed var(--line)}
 .solution:first-of-type{border-top:0;padding-top:8px}
 .solution .num{font-family:var(--f-mono);color:var(--accent);font-size:.8rem;letter-spacing:.1em}
 .solution h3{font-size:2.1rem;text-transform:uppercase;margin-top:6px}
-.solution .copy{display:flex;flex-direction:column;gap:16px;min-width:0}
+.solution .copy{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);grid-template-areas:"num kv" "h kv" "p kv";gap:12px 48px;align-items:start;min-width:0}
+.solution .copy .num{grid-area:num}.solution .copy h3{grid-area:h}.solution .copy > p{grid-area:p}.solution .copy .kv{grid-area:kv;align-self:end}
+@media (max-width:900px){.solution .copy{grid-template-columns:minmax(0,1fr);grid-template-areas:"num" "h" "p" "kv"}}
 .solution .copy p{color:var(--muted)}
 .kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;font-size:.92rem}
 .kv dt{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:3px}
@@ -112,6 +114,9 @@ section.band{padding-block:72px;border-top:1px solid var(--line)}
 .controls button.pp{width:36px;height:36px;border-radius:50%;border:0;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;cursor:pointer;flex:none}
 .controls input[type=range]{flex:1;min-width:0;accent-color:var(--accent)}
 .controls .time{font-family:var(--f-mono);font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums;flex:none}
+.controls .fs{width:34px;height:34px;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none}
+.player:fullscreen{display:flex;flex-direction:column;justify-content:center;background:var(--surface);overflow:auto}
+.player:fullscreen canvas{width:min(100%, calc((100vh - 170px) * 16 / 9));margin-inline:auto}
 .chapters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
 .chapters button{border:0;border-right:1px solid var(--line);background:transparent;padding:10px 12px;text-align:left;cursor:pointer;font-size:.82rem;color:var(--muted);min-width:0}
 .chapters button:last-child{border-right:0}

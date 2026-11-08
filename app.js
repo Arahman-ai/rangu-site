@@ -51,7 +51,16 @@ document.getElementById('f')?.addEventListener('submit',e=>{
   e.preventDefault();const ok=document.getElementById('f-ok');
   const n=document.getElementById('f-name').value.trim(),m=document.getElementById('f-mail').value.trim();
   if(!n||!/^\S+@\S+\.\S+$/.test(m)){ok.hidden=false;ok.textContent='Add your name and a valid work email so we can reply.';return;}
-  ok.hidden=false;ok.textContent=`Thanks, ${n}. This form doesn't send messages yet, so please email sales@rangu.us or WhatsApp +1 (404) 203-7674 with your note about ${document.getElementById('f-int').value.toLowerCase()}.`;
+  const fallback=`Thanks, ${n}. Please email sales@rangu.us or WhatsApp +1 (404) 203-7674 with your note, and we'll get right back to you.`;
+  const id=e.currentTarget.dataset.formspree,btn=e.currentTarget.querySelector('button[type=submit]');
+  if(!id){ok.hidden=false;ok.textContent=fallback;return;}
+  btn.disabled=true;ok.hidden=false;ok.textContent='Sending…';
+  fetch('https://formspree.io/f/'+id,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify({
+    name:n,company:document.getElementById('f-co').value.trim(),email:m,_replyto:m,interest:document.getElementById('f-int').value,
+    message:document.getElementById('f-msg').value.trim(),_subject:'Rangu website inquiry: '+document.getElementById('f-int').value})})
+  .then(r=>{if(!r.ok)throw 0;ok.textContent=`Thanks, ${n}. Your message reached us at sales@rangu.us, and we'll reply to ${m} soon.`;e.target.reset();})
+  .catch(()=>{ok.textContent='That didn\'t go through. '+fallback;})
+  .finally(()=>{btn.disabled=false;});
 });
 
 /* ---------- explainer engine ---------- */
@@ -108,7 +117,7 @@ const ASSET={still:9.6,chapters:[
    axes(g,c,x0,x1,y0,y1,[0,2,4,6,8],0,8,'mm/s');
    [0,15,30,45,60].forEach(d=>T(g,'day '+d,xm(d),y1+22,{c:c.muted,s:12,a:'center'}));
    g.strokeStyle=c.alarm;g.setLineDash([6,5]);g.beginPath();g.moveTo(x0,ym(4.5));g.lineTo(x1,ym(4.5));g.stroke();g.setLineDash([]);
-   T(g,'Fixed alarm limit 4.5 mm/s',x1,ym(4.5)-8,{c:c.alarm,s:12,a:'right'});
+   T(g,'Fixed alarm limit 4.5 mm/s',x0+8,ym(4.5)-8,{c:c.alarm,s:12});
    g.fillStyle=c.soft;g.fillRect(x0,ym(2.45),x1-x0,ym(1.55)-ym(2.45));T(g,'learned normal band',x0+8,ym(2.45)-6,{c:c.muted,s:12});
    const dEnd=ease(seg(lt,0,4.3))*60,pts=[];for(let d=0;d<=dEnd;d+=.25)pts.push([xm(d),ym(vib(d))]);poly(g,pts,c.ink,2);
    if(dEnd>=FLAG){const x=xm(FLAG),y=ym(vib(FLAG));g.beginPath();g.arc(x,y,7,0,7);g.fillStyle=c.warn;g.fill();
@@ -116,7 +125,7 @@ const ASSET={still:9.6,chapters:[
      rr(g,x-170,y0+6,170,48,4);g.fillStyle=c.surface;g.fill();g.strokeStyle=c.warn;g.stroke();
      T(g,`Rangu flags drift · day ${FLAG}`,x-160,y0+26,{c:c.ink,s:12,w:600});T(g,'outer-race tone rising',x-160,y0+44,{c:c.muted,s:12});}
    if(dEnd>=ALARM){const x=xm(ALARM),y=ym(4.5);g.beginPath();g.arc(x,y,6,0,7);g.fillStyle=c.alarm;g.fill();
-     T(g,`alarm · day ${ALARM}`,x-10,y+24,{c:c.alarm,s:12,a:'right'});
+     T(g,`alarm · day ${ALARM}`,x+12,y+26,{c:c.alarm,s:12});
      const xa=xm(FLAG);g.strokeStyle=c.accent;g.lineWidth=2;g.beginPath();g.moveTo(xa,y1-30);g.lineTo(x,y1-30);g.stroke();
      T(g,`${ALARM-FLAG} days earlier`,(xa+x)/2,y1-38,{c:c.accent,s:13,a:'center',w:600});}
  }},
@@ -249,7 +258,7 @@ if(list)list.innerHTML=SOLS.map((s,i)=>`<article class="solution" id="${s.id}">
   <dl class="kv">${s.kv.map(k=>`<dt>${k[0]}</dt><dd>${k[1]}</dd>`).join('')}</dl></div>
   <div class="player" data-i="${i}">
     <canvas role="img" aria-label="Animated explainer: ${s.title}"></canvas>
-    <div class="controls"><button class="pp" type="button" aria-label="Play"></button><input type="range" min="0" max="24" step="0.05" aria-label="Seek"><span class="time">0:00 / 0:24</span></div>
+    <div class="controls"><button class="pp" type="button" aria-label="Play"></button><input type="range" min="0" max="24" step="0.05" aria-label="Seek"><span class="time">0:00 / 0:24</span><button class="fs" type="button" aria-label="Full screen"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1.5 5.5v-4h4M10.5 1.5h4v4M14.5 10.5v4h-4M5.5 14.5h-4v-4"/></svg></button></div>
     <div class="chapters">${s.spec.chapters.map((c,k)=>`<button type="button" data-k="${k}"><b>0${k+1}</b>${c.t}</button>`).join('')}</div>
     <p class="caption" aria-live="polite"></p>
   </div></article>`).join('');
@@ -275,7 +284,11 @@ document.querySelectorAll('.player').forEach(el=>{
   pp.addEventListener('click',()=>{st.user=true;st.playing?pause():play();});
   rng.addEventListener('input',()=>{st.t=+rng.value;draw();});
   chs.forEach((b,k)=>b.addEventListener('click',()=>{st.t=k*DUR+.01;draw();if(!st.playing){st.user=true;play();}}));
-  function size(){const w=cv.clientWidth,d=Math.min(2,devicePixelRatio||1);cv.width=Math.round(w*d);cv.height=Math.round(w*d*H/W);draw();}
+  function size(){const w=cv.getBoundingClientRect().width,d=Math.min(3,Math.max(1,devicePixelRatio||1));const bw=Math.round(w*d);if(bw<2)return;cv.width=bw;cv.height=Math.round(bw*H/W);draw();}
+  const fsb=el.querySelector('.fs');
+  fsb.addEventListener('click',()=>{try{const p=document.fullscreenElement?document.exitFullscreen():(el.requestFullscreen||el.webkitRequestFullscreen).call(el);if(p&&p.catch)p.catch(()=>{fsb.hidden=true;});}catch(_){fsb.hidden=true;}});
+  if(!(el.requestFullscreen||el.webkitRequestFullscreen))fsb.hidden=true;
+  addEventListener('resize',size);
   new ResizeObserver(size).observe(cv);
   players.push({el,st,play,pause,draw});
 });
