@@ -17,7 +17,7 @@
       <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect x="1" y="1" width="28" height="28" rx="4" fill="none" stroke="var(--ink)" stroke-width="2"/><path d="M5 17h4l3-8 4 13 3-9 2 4h4" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></svg>
       RANGU <small>rangu.us</small>
     </a>
-    <nav class="links" aria-label="Main"><a href="sensors.html">Sensors</a><a href="solutions.html">Solutions</a><a href="index.html#how">How it works</a><a href="index.html#contact">Contact</a></nav>
+    <nav class="links" aria-label="Main"><a href="sensors.html">Sensors</a><a href="solutions.html">Solutions</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></nav>
     <a class="btn primary cta" href="index.html#contact">Talk to an engineer</a>
   </div>
 </header>
@@ -59,13 +59,31 @@
       <p class="lede">The same data path runs under every solution, so a sensor you add for reliability also feeds layout and throughput analysis.</p>
     </div>
     <div class="flow">
-      <div><b>01 SENSE</b><h3>Instrument</h3><p>Clamp, bolt or magnet-mount sensors on motors, pumps, presses and conveyors. Most installs finish in one shift with no line stop.</p></div>
+      <div><b>01 SENSE</b><h3>Instrument</h3><p>We install sensors on motors, pumps, presses and conveyors ourselves, on site anywhere in the US. Most installs finish in one shift with no line stop.</p></div>
       <div><b>02 EDGE</b><h3>Condition</h3><p>The RG-X900 gateway samples at up to 51.2 kHz, computes FFTs and features on site, and sends compact summaries instead of raw waveforms.</p></div>
       <div><b>03 MODEL</b><h3>Learn</h3><p>Baseline models learn each asset's normal behavior. Anomaly, remaining-useful-life and flow models update as new data arrives.</p></div>
       <div><b>04 ACT</b><h3>Decide</h3><p>Alerts arrive as ranked work orders in your CMMS, layout scenarios as floor plans, and schedules as shift-level recommendations.</p></div>
     </div>
   </div>
 </section>
+<section class="band" id="about">
+  <div class="wrap about">
+    <div class="who">
+      <div class="mono" aria-hidden="true"><svg width="44" height="44" viewBox="0 0 30 30"><path d="M5 17h4l3-8 4 13 3-9 2 4h4" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+      <div><p class="eyebrow">About Rangu</p><h2 style="margin-top:10px">Built on maintenance, software, ML and operations engineering</h2></div>
+    </div>
+    <div class="about-body">
+      <p>Rangu is based in Atlanta and led by two founders with backgrounds across maintenance, software, machine learning and operations. One started on the plant floor, as a manufacturing engineer in steel and electronics plants and later supervising mechanical maintenance for a major US freight railroad, and has seen firsthand what an unplanned failure costs.</p>
+      <p>Both founders are published researchers. Rangu brings plant-floor experience and research together: sensors that hold up in a real plant, and models that turn their signals into decisions.</p>
+      <dl class="creds">
+        <div><dt>Expertise</dt><dd>Maintenance &amp; reliability &middot; operations research &amp; analytics &middot; machine learning &middot; software engineering</dd></div>
+        <div><dt>Industry</dt><dd>Freight rail maintenance &middot; steel &middot; electronics and appliance manufacturing</dd></div>
+        <div><dt>Publications</dt><dd>25+ peer-reviewed papers across the founding team</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
 <section class="band" id="contact">
   <div class="wrap contact">
     <div>
@@ -78,7 +96,7 @@
         <dt>WhatsApp</dt><dd><a class="wa" href="https://wa.me/14042037674" target="_blank" rel="noopener">Chat on WhatsApp</a></dd>
       </dl>
     </div>
-    <form id="f" novalidate>
+    <form id="f" novalidate data-formspree="">
       <label>Name<input id="f-name" required autocomplete="name"></label>
       <label>Company<input id="f-co" autocomplete="organization"></label>
       <label class="full">Work email<input id="f-mail" type="email" required autocomplete="email"></label>
@@ -88,11 +106,12 @@
           <option>Layout optimization</option>
           <option>Operations optimization</option>
           <option>Industrial R&amp;D or AI/ML services</option>
+          <option>On-site installation &amp; commissioning</option>
           <option>Sensors only</option>
         </select>
       </label>
       <label class="full">What should we know?<textarea id="f-msg" placeholder="e.g. Two boiler feed pumps trip about once a quarter; no vibration monitoring today."></textarea></label>
-      <div class="full" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><button class="btn primary" type="submit">Request a pilot</button><span class="note">Concept site: this form does not send anything yet.</span></div>
+      <div class="full" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><button class="btn primary" type="submit">Request a pilot</button><span class="note">Messages go to sales@rangu.us.</span></div>
       <div class="ok" id="f-ok" hidden></div>
     </form>
   </div>
